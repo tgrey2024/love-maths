@@ -47,9 +47,10 @@ function checkAnswer() {
     let isCorrect = userAnswer === calculatedAnswer[0]; // check if the user's answer is the same as the correct answer
 
     if (isCorrect) {
-        alert("Hey! You got it right! :D");
+        incrementScore(); // call the incrementScore function
     } else {
         alert(`Awwww...you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer(); // call the incrementWrongAnswer function
     }
 
     runGame(calculatedAnswer[1]); // call the runGame function and pass the game type as an argument
@@ -72,12 +73,22 @@ function calculateCorrectAnswer() {
         throw `Unimplemented operator ${operator}. Aborting!`;
     }
 }
-
+/**
+ * Gets the current score from the DOM and increments it by 1
+ */
 function incrementScore() {
+    let oldScore = parseInt(document.getElementById('score').innerText); // get the value of the element with the ID of score as an integer
+    document.getElementById('score').innerText = ++oldScore; // increment the value of the element with the ID of score by 1
 
 }
 
+/**
+ * Gets the current tally of incorrect answers from the DOM and increments it by 1
+ */
+
 function incrementWrongAnswer() {
+    let oldScore = parseInt(document.getElementById('incorrect').innerText); // get the value of the element with the ID of incorrect as an integer
+    document.getElementById('incorrect').innerText = ++oldScore; // increment the value of the element with the ID of incorrect by 1
 
 }
 
